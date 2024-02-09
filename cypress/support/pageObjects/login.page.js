@@ -1,8 +1,8 @@
 class LoginPage {
 
     get usernameInput() {
-      return cy.get('[id="username"]');
-    }
+        return cy.get('[id="username"]');
+      }
 
     get passwordInput() {
         return cy.get('[id="password"]');
