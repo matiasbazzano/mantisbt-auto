@@ -23,6 +23,10 @@ class LoginPage {
     get loginAnonymously() {
         return cy.get('.back-to-login-link.pull-right');
       }
+      //dashboard po
+    get userInfoElement() {
+        return cy.get('span.user-info');
+      }
 
     login(user, password) {
         this.usernameInput.type(user);

@@ -17,7 +17,7 @@ describe("Mantis BT - Login Page Tests", () => {
         LoginPage.dangerAlert.should("be.visible");
       });
 
-      it("@Regression - Login with invalid user", () => {
+    it("@Regression - Login with invalid user", () => {
         LoginPage.login(AccountData.invalidUser, AccountData.validPassword);
         LoginPage.dangerAlert.should("be.visible");
       });
@@ -25,7 +25,7 @@ describe("Mantis BT - Login Page Tests", () => {
     it("@Regression - Login with invalid credentials", () => {
       LoginPage.login(AccountData.invalidUser, AccountData.invalidPassword);
       LoginPage.dangerAlert.should("be.visible");
-    });
+      });
 
     it("@Regression - Login with empty username field", () => {
         LoginPage.usernameInput.clear();
@@ -39,5 +39,16 @@ describe("Mantis BT - Login Page Tests", () => {
         LoginPage.passwordInput.clear();
         LoginPage.loginButton.click();
         LoginPage.dangerAlert.should("be.visible");
+      });
+
+      it("@Smoke - Navigation link - Signup for a new account", () => {
+        LoginPage.registerLink.click();
+        cy.url().should("eq", DeepUrl.register);
+      });
+
+      it("@Smoke - Navigation link - Login Anonymously", () => {
+        LoginPage.loginAnonymously.click();
+        cy.url().should("eq", DeepUrl.myView);
+        LoginPage.userInfoElement.should('be.visible').contains('anonymous');
       });
   });
