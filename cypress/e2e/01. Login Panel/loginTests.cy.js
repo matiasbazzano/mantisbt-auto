@@ -1,6 +1,7 @@
 import LoginPage from "../../support/pageObjects/login.page.js";
 import DeepUrl from "../../data/deepUrl.js";
 import AccountData from "../../data/account.js";
+import Header from "../../support/pageObjects/header.page.js";
 describe("Mantis BT - Login Page Tests", () => {
 
     beforeEach(() => {
@@ -10,6 +11,7 @@ describe("Mantis BT - Login Page Tests", () => {
     it("@Smoke - Success Login", () => {
       LoginPage.login(AccountData.validUser, AccountData.validPassword);
       cy.url().should("eq", DeepUrl.myView);
+      Header.mantisDashboardLinkButton.should('be.visible');
     });
   
     it("@Regression - Login with invalid password", () => {
@@ -49,6 +51,6 @@ describe("Mantis BT - Login Page Tests", () => {
       it("@Smoke - Navigation link - Login Anonymously", () => {
         LoginPage.loginAnonymously.click();
         cy.url().should("eq", DeepUrl.myView);
-        LoginPage.userInfoElement.should('be.visible').contains('anonymous');
+        Header.accountOptionsDropdown.should('be.visible').contains('anonymous');
       });
   });
