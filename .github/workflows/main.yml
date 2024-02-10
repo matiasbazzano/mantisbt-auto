@@ -1,0 +1,24 @@
+name: automation-jobs
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '42 5 * * *'
+
+env:
+  EMAIL: ${{ secrets.USER }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+jobs:
+  mantisbt_ui_auto:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.x"
+      - run: npx cypress run
