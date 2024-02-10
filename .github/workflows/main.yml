@@ -11,10 +11,8 @@ env:
   EMAIL: ${{ secrets.USER }}
   PASSWORD: ${{ secrets.PASSWORD }}
 jobs:
-  mantisbt_ui_auto:
+  ui_auto:
     runs-on: ubuntu-latest
-    defaults:
-      run:
     steps:
       - uses: actions/checkout@v2
       - name: Test
