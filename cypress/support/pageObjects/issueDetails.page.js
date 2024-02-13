@@ -4,48 +4,20 @@ class IssueDetailsPage {
         return cy.get('[id="category_id"]');
     }
 
-    getCategoryOption(value) {
-        return this.categoryDropdown.find(`option[value="${value}"]`);
-    }
-    
-    selectCategory(value) {
-        this.categoryDropdown.select(value);
-    }
-
     get reproducibilityDropdown() {
         return cy.get('[id="reproducibility"]');
-    }
-
-    getReproducibilityOption(value) {
-        return this.reproducibilityDropdown.find(`option[value="${value}"]`);
-    }
-    
-    selectReproducibility(value) {
-        this.reproducibilityDropdown.select(value);
     }
 
     get severityDropdown() {
         return cy.get('[id="severity"]');
     }
 
-    getSeverityOption(value) {
-        return this.severityDropdown.find(`option[value="${value}"]`);
-    }
-    
-    selectSeverity(value) {
-        this.severityDropdown.select(value);
-    }
-
     get priorityDropdown() {
         return cy.get('[id="priority"]');
     }
 
-    getPriorityOption(value) {
-        return this.priorityDropdown.find(`option[value="${value}"]`);
-    }
-    
-    selectPriority(value) {
-        this.priorityDropdown.select(value);
+    get expandProfileInputs() {
+        return cy.get('[id="profile_closed_link"]');
     }
 
     get profilePlatformInput() {
@@ -62,14 +34,6 @@ class IssueDetailsPage {
 
     get productVersionDropdown() {
         return cy.get('[id="product_version"]');
-    }
-
-    getProductVersionOption(value) {
-        return this.productVersionDropdown.find(`option[value="${value}"]`);
-    }
-    
-    selectProductVersion(value) {
-        this.productVersionDropdown.select(value);
     }
 
     get summaryInput() {
