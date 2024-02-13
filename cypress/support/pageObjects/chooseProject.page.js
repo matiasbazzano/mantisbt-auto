@@ -1,7 +1,7 @@
 class ChooseProjectPage {
 
     get selectProjectDropdown() {
-        return cy.get('[id="select-project-id"]');
+        return cy.get('#select-project-id');
       }
 
       get selectProjectButton() {

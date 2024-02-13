@@ -17,6 +17,7 @@ const DeepUrl = {
     accountMySnippets: `${BaseUrl.base}/plugin.php?page=Snippets/snippet_list`,
     chooseProject: `${BaseUrl.base}/login_select_proj_page.php?ref=bug_report_page.php`,
     bugReport: `${BaseUrl.base}/bug_report_page.php`,
+    viewIssueDetals: `${BaseUrl.base}/view.php?id=`,
   };
   
   export default DeepUrl;
