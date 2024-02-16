@@ -52,9 +52,17 @@ class IssueDetailsPage {
         return cy.get('[id="additional_info"]');
     }
 
+    get publicCheckbox() {
+        return cy.get('input.ace[value="10"][tabindex="14"]').as('publicCheckbox');
+    }
+
+    get privateCheckbox() {
+        return cy.get('input.ace[value="50"][tabindex="15"]').as('privateCheckbox');
+    }
+
     get submitIssueButton() {
         return cy.get('input[type="submit"].btn.btn-primary.btn-white.btn-round[value="Submit Issue"]');
-      }
+    }
 }
     
 export default new IssueDetailsPage();
