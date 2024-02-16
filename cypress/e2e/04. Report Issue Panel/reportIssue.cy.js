@@ -2,6 +2,7 @@ import LoginPage from "../../support/pageObjects/login.page.js";
 import Header from "../../support/pageObjects/header.page.js";
 import ChooseProjectPage from "../../support/pageObjects/chooseProject.page.js";
 import IssueDetailsPage from "../../support/pageObjects/issueDetails.page.js";
+import ViewIssueDetailsPage from "../../support/pageObjects/viewIssueDetails.page.js";
 import AccountData from "../../data/account.js";
 import NewIssue from "../../data/newIssue.js";
 import DeepUrl from "../../data/deepUrl.js"
@@ -30,7 +31,7 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         IssueDetailsPage.stepsToReproduce.type(NewIssue.steps);
         IssueDetailsPage.additionalInfoInput.type(NewIssue.additionalInfo);
         IssueDetailsPage.submitIssueButton.click();
-        cy.url().should("include", DeepUrl.viewIssueDetals);
+        cy.url().should("include", DeepUrl.viewIssueDetails);
       });
 
       it("@Smoke - Report New Issue - Mylyn Connector Project", () => {
@@ -50,7 +51,33 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         IssueDetailsPage.stepsToReproduce.type(NewIssue.steps);
         IssueDetailsPage.additionalInfoInput.type(NewIssue.additionalInfo);
         IssueDetailsPage.submitIssueButton.click();
-        cy.url().should("include", DeepUrl.viewIssueDetals);
+        cy.url().should("include", DeepUrl.viewIssueDetails);
+      });
+
+      it("@Smoke - Report New Issue (public status) - mantisbt Project", () => {
+        Header.reportIssueButton.click();
+        ChooseProjectPage.selectProjectDropdown.select('1');
+        ChooseProjectPage.selectProjectButton.click();
+        IssueDetailsPage.categoryDropdown.select('2');
+        IssueDetailsPage.summaryInput.type(NewIssue.summary);
+        IssueDetailsPage.descriptionInput.type(NewIssue.description);
+        IssueDetailsPage.publicCheckbox.click({ force: true });
+        IssueDetailsPage.submitIssueButton.click();
+        cy.url().should("include", DeepUrl.viewIssueDetails);
+        ViewIssueDetailsPage.visibilityLabel.should('include.text', 'public');
+      });
+
+      it("@Smoke - Report New Issue (private status) - mantisbt Project", () => {
+        Header.reportIssueButton.click();
+        ChooseProjectPage.selectProjectDropdown.select('1');
+        ChooseProjectPage.selectProjectButton.click();
+        IssueDetailsPage.categoryDropdown.select('2');
+        IssueDetailsPage.summaryInput.type(NewIssue.summary);
+        IssueDetailsPage.descriptionInput.type(NewIssue.description);
+        IssueDetailsPage.privateCheckbox.click({ force: true });
+        IssueDetailsPage.submitIssueButton.click();
+        cy.url().should("include", DeepUrl.viewIssueDetails);
+        ViewIssueDetailsPage.visibilityLabel.should('include.text', 'private');
       });
 
       it("@Regression - Report New Issue - Leave the required dropdowns empty (category)", () => {
@@ -85,6 +112,4 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         })
         cy.url().should("eq", DeepUrl.bugReport);
       });
-
-      //do a test to check the status of an issue created, private/public in viewIssueDetails (involves pageobject and saving the private and public checkbox)
   });
