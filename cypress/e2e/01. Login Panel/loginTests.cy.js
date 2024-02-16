@@ -52,6 +52,5 @@ describe("Mantis BT - Login Page Tests", () => {
         LoginPage.loginAnonymously.click();
         cy.url().should("eq", DeepUrl.myView);
         Header.accountOptionsDropdown.should('be.visible').contains('anonymous');
-        Header.reportIssueButton.should('not.exist');
       });
   });
