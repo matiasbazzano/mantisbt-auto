@@ -29,7 +29,7 @@ class ViewIssueDetails {
         return cy.get('.bug-reproducibility');
     }
 
-    get productVersionlabel() {
+    get productVersionLabel() {
         return cy.get('.bug-product-version');
     }
 }

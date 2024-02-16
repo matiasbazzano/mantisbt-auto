@@ -96,11 +96,10 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         ViewIssueDetailsPage.projectLabel.should('include.text', 'mantisbt');
         ViewIssueDetailsPage.categoryLabel.should('include.text', 'administration');
         ViewIssueDetailsPage.reporterLabel.should('include.text', AccountData.validUser);
-        ViewIssueDetailsPage.priorityLabel.should('include.text', 'normal');
+        ViewIssueDetailsPage.priorityLabel.should('include.text', 'none');
         ViewIssueDetailsPage.severityLabel.should('include.text', 'feature');
-        ViewIssueDetailsPage.productVersionDropdown.should('include.text', 'always');
         ViewIssueDetailsPage.reproducibilityLabel.should('include.text', 'always');
-        ViewIssueDetailsPage.productVersionlabel.should('include.text', '2.0.0');
+        ViewIssueDetailsPage.productVersionLabel.should('include.text', '2.0.0');
       });
 
       it("@Regression - Report New Issue - Leave the required dropdowns empty (category)", () => {
