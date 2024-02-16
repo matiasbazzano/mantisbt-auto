@@ -54,7 +54,7 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         cy.url().should("include", DeepUrl.viewIssueDetails);
       });
 
-      it("@Smoke - Report New Issue (public status) - mantisbt Project", () => {
+      it("@Smoke - Report New Issue (check public status) - mantisbt Project", () => {
         Header.reportIssueButton.click();
         ChooseProjectPage.selectProjectDropdown.select('1');
         ChooseProjectPage.selectProjectButton.click();
@@ -67,7 +67,7 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         ViewIssueDetailsPage.visibilityLabel.should('include.text', 'public');
       });
 
-      it("@Smoke - Report New Issue (private status) - mantisbt Project", () => {
+      it("@Smoke - Report New Issue (check private status) - mantisbt Project", () => {
         Header.reportIssueButton.click();
         ChooseProjectPage.selectProjectDropdown.select('1');
         ChooseProjectPage.selectProjectButton.click();
@@ -78,6 +78,29 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         IssueDetailsPage.submitIssueButton.click();
         cy.url().should("include", DeepUrl.viewIssueDetails);
         ViewIssueDetailsPage.visibilityLabel.should('include.text', 'private');
+      });
+
+      it.only("@Smoke - Report New Issue (check labels post report) - mantisbt Project", () => {
+        Header.reportIssueButton.click();
+        ChooseProjectPage.selectProjectDropdown.select('1');
+        ChooseProjectPage.selectProjectButton.click();
+        IssueDetailsPage.categoryDropdown.select('2');
+        IssueDetailsPage.reproducibilityDropdown.select('10');
+        IssueDetailsPage.severityDropdown.select('10');
+        IssueDetailsPage.priorityDropdown.select('10');
+        IssueDetailsPage.productVersionDropdown.select('2.0.0');
+        IssueDetailsPage.summaryInput.type(NewIssue.summary);
+        IssueDetailsPage.descriptionInput.type(NewIssue.description);
+        IssueDetailsPage.submitIssueButton.click();
+        cy.url().should("include", DeepUrl.viewIssueDetails);
+        ViewIssueDetailsPage.projectLabel.should('include.text', 'mantisbt');
+        ViewIssueDetailsPage.categoryLabel.should('include.text', 'administration');
+        ViewIssueDetailsPage.reporterLabel.should('include.text', AccountData.validUser);
+        ViewIssueDetailsPage.priorityLabel.should('include.text', 'normal');
+        ViewIssueDetailsPage.severityLabel.should('include.text', 'feature');
+        ViewIssueDetailsPage.productVersionDropdown.should('include.text', 'always');
+        ViewIssueDetailsPage.reproducibilityLabel.should('include.text', 'always');
+        ViewIssueDetailsPage.productVersionlabel.should('include.text', '2.0.0');
       });
 
       it("@Regression - Report New Issue - Leave the required dropdowns empty (category)", () => {

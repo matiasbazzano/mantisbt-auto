@@ -28,6 +28,10 @@ class ViewIssueDetails {
     get reproducibilityLabel() {
         return cy.get('.bug-reproducibility');
     }
+
+    get productVersionlabel() {
+        return cy.get('.bug-product-version');
+    }
 }
     
 export default new ViewIssueDetails();
