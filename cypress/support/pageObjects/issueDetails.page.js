@@ -53,11 +53,11 @@ class IssueDetailsPage {
     }
 
     get publicCheckbox() {
-        return cy.get('input.ace[value="10"][tabindex="14"]').as('publicCheckbox');
+        return cy.get('input.ace[value="10"][tabindex="14"]');
     }
 
     get privateCheckbox() {
-        return cy.get('input.ace[value="50"][tabindex="15"]').as('privateCheckbox');
+        return cy.get('input.ace[value="50"][tabindex="15"]');
     }
 
     get submitIssueButton() {
