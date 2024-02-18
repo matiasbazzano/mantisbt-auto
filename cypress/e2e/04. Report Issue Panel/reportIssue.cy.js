@@ -3,6 +3,7 @@ import Header from "../../support/pageObjects/header.page.js";
 import ChooseProjectPage from "../../support/pageObjects/chooseProject.page.js";
 import IssueDetailsPage from "../../support/pageObjects/issueDetails.page.js";
 import ViewIssueDetailsPage from "../../support/pageObjects/viewIssueDetails.page.js";
+import TimelinePanel from "../../support/pageObjects/dashboardTimeline.js"
 import AccountData from "../../data/account.js";
 import NewIssue from "../../data/newIssue.js";
 import DeepUrl from "../../data/deepUrl.js"
@@ -80,7 +81,7 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         ViewIssueDetailsPage.visibilityLabel.should('include.text', 'private');
       });
 
-      it.only("@Smoke - Report New Issue (check labels post report) - mantisbt Project", () => {
+      it("@Smoke - Report New Issue (check labels post report) - mantisbt Project", () => {
         Header.reportIssueButton.click();
         ChooseProjectPage.selectProjectDropdown.select('1');
         ChooseProjectPage.selectProjectButton.click();
@@ -100,6 +101,18 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         ViewIssueDetailsPage.severityLabel.should('include.text', 'feature');
         ViewIssueDetailsPage.reproducibilityLabel.should('include.text', 'always');
         ViewIssueDetailsPage.productVersionLabel.should('include.text', '2.0.0');
+      });
+
+      it("@Regression - Report New Issue and check dashboard timeline with the created issue - mantisbt Project", () => {
+        Header.reportIssueButton.click();
+        ChooseProjectPage.selectProjectDropdown.select('1');
+        ChooseProjectPage.selectProjectButton.click();
+        IssueDetailsPage.categoryDropdown.select('2');
+        IssueDetailsPage.summaryInput.type(NewIssue.summary);
+        IssueDetailsPage.descriptionInput.type(NewIssue.description);
+        IssueDetailsPage.submitIssueButton.click();
+        Header.mantisDashboardLinkButton.click();
+        TimelinePanel.usernameTimeline.first().contains(AccountData.validUser);
       });
 
       it("@Regression - Report New Issue - Leave the required dropdowns empty (category)", () => {
