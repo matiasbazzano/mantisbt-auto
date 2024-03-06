@@ -40,4 +40,4 @@ Cypress.Commands.add("loginByRequest", (username, password, sessionId) => {
       }
     }
   );
-});
+})

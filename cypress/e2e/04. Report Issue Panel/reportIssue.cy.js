@@ -23,6 +23,7 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         IssueDetailsPage.reproducibilityDropdown.select('10');
         IssueDetailsPage.severityDropdown.select('10');
         IssueDetailsPage.priorityDropdown.select('10');
+        IssueDetailsPage.expandProfileInputs.click();
         IssueDetailsPage.profilePlatformInput.type(NewIssue.platform);
         IssueDetailsPage.osPlatformInput.type(NewIssue.os);
         IssueDetailsPage.osVersionPlatformInput.type(NewIssue.osVersion);
@@ -43,9 +44,6 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         IssueDetailsPage.reproducibilityDropdown.select('10');
         IssueDetailsPage.severityDropdown.select('10');
         IssueDetailsPage.priorityDropdown.select('10');
-        IssueDetailsPage.profilePlatformInput.type(NewIssue.platform);
-        IssueDetailsPage.osPlatformInput.type(NewIssue.os);
-        IssueDetailsPage.osVersionPlatformInput.type(NewIssue.osVersion);
         IssueDetailsPage.productVersionDropdown.select('3.0.1');
         IssueDetailsPage.summaryInput.type(NewIssue.summary);
         IssueDetailsPage.descriptionInput.type(NewIssue.description);
