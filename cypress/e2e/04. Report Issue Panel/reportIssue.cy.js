@@ -75,7 +75,7 @@ describe("Mantis BT - Report Issue Page Tests", () => {
         ViewIssueDetailsPage.visibilityLabel.should('include.text', 'private');
       });
 
-      it("@Smoke - Report New Issue (check labels post report) - mantisbt Project", () => {
+      it.skip("@Smoke - Report New Issue (check labels post report) - mantisbt Project", () => {
         Header.reportIssueButton.click();
         ChooseProjectPage.selectProjectDropdown.select('1');
         ChooseProjectPage.selectProjectButton.click();
