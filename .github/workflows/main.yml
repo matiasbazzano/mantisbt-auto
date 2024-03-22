@@ -32,7 +32,7 @@ jobs:
           npm run cypress:run
 
       - name: Create directory for reports
-        run: mkdir -p cypress/reports/mochawesome/report
+        run: mkdir -p cypress/reports/mochawesome/
 
       - name: Merge Cypress report files
         run: npm run cypress:merge-reports
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: CypressHTMLReport
-          path: cypress/reports/mochawesome/report
+          path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report.html
