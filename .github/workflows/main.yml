@@ -25,20 +25,23 @@ jobs:
       - name: Install Cypress and dependencies
         run: |
           npm install cypress
-          npm install cypress-multi-reporters mocha mochawesome
+          npm install mochawesome mochawesome-merge mochawesome-report-generator
 
       - name: Run Cypress tests
         run: |
-          npx cypress run --browser chrome --headless --reporter mochawesome
+          npm run cypress:run
 
       - name: Create directory for reports
-        run: mkdir -p testResults
+        run: mkdir -p cypress/reports/mochawesome
 
-      - name: Move Cypress report files
-        run: mv cypress/reports/mochawesome/*.html testResults/
+      - name: Merge Cypress report files
+        run: npm run cypress:merge-reports
+
+      - name: Create HTML report
+        run: npm run cypress:create-html
 
       - name: Upload report as artifact
         uses: actions/upload-artifact@v2
         with:
           name: CypressHTMLReport
-          path: testResults/
+          path: cypress/reports/mochawesome/report
