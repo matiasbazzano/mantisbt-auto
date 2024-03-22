@@ -2,6 +2,7 @@ import DeepUrl from "../../data/deepUrl.js";
 import AccountData from "../../data/account.js";
 import Header from "../../support/pageObjects/header.page.js";
 import UpdateAccountData from "../../data/updateAccount.js";
+import RandomData from "../../data/randomData.js";
 import MyAccountPage from "../../support/pageObjects/myAccount.page.js";
 
 describe("Mantis BT - My Account - Edit Account Tests", () => {
@@ -14,11 +15,11 @@ describe("Mantis BT - My Account - Edit Account Tests", () => {
     it("@Smoke - Edit Account with random valid email", () => {
         const randomEmail = UpdateAccountData.emails[Math.floor(Math.random() * UpdateAccountData.emails.length)];
         MyAccountPage.emailInput.clear();
-        MyAccountPage.emailInput.type(randomEmail);
+        MyAccountPage.emailInput.type(`${RandomData.randomValue}+${randomEmail}`);
         MyAccountPage.updateUserButton.click();
         Header.accountOptionsDropdown.click();
         Header.myAccountOptionLink.click();
-        MyAccountPage.emailInput.should('have.value', randomEmail);
+        MyAccountPage.emailInput.should('have.value', `${RandomData.randomValue}+${randomEmail}`);
     });
 
     it("@Smoke - Edit Account with random valid real name", () => {
