@@ -32,7 +32,7 @@ jobs:
           npm run cypress:run
 
       - name: Create directory for reports
-        run: mkdir -p cypress/reports/mochawesome
+        run: mkdir -p cypress/reports/mochawesome/report
 
       - name: Merge Cypress report files
         run: npm run cypress:merge-reports
