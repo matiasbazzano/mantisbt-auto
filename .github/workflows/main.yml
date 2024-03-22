@@ -4,8 +4,6 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: '42 5 * * *'
 
 env:
   EMAIL: ${{ secrets.USER }}
@@ -14,9 +12,27 @@ jobs:
   ui_auto:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Test
-        uses: actions/setup-node@v1
-        with:
-          node-version: "18.x"
-      - run: npx cypress run
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with: 
+          node-version: '16.x'
+
+      - name: Install Newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+      - name: Make directory for results
+        run: mkdir -p testResults
+
+      - name: Run tests
+        run: npx cypress run -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html || true
+
+      - name: Output the run Details
+        uses: actions/upload-artifact@v2
+        with: 
+          name: TestRunReports
+          path: testResults
