@@ -6,8 +6,8 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:merge-reports-html": "mochawesome-merge cypress/reports/mochawesome/*.html -o cypress/reports/mochawesome/mochawesome.html",
-    "cypress:merge-reports-json": "mochawesome-merge cypress/reports/mochawesome/*.json -o cypress/reports/mochawesome/mochawesome.json",
+    "cypress:merge-reports-html": "mochawesome-merge cypress/reports/mochawesome/*.html -o cypress/reports/mochawesome/report.html",
+    "cypress:merge-reports-json": "mochawesome-merge cypress/reports/mochawesome/*.json -o cypress/reports/mochawesome/report.json",
     "cypress:create-html": "marge cypress/reports/mochawesome/mochawesome.html -f report -o cypress/reports/mochawesome",
     "cypress:create-json": "marge cypress/reports/mochawesome/mochawesome.html -f json -o cypress/reports/mochawesome"
   },
