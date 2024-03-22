@@ -37,11 +37,8 @@ jobs:
       - name: Merge Cypress report files
         run: npm run cypress:merge-reports-json
 
-      - name: Create HTML report
-        run: npm run cypress:create-json
-
-      - name: Upload HTML report as artifact
+      - name: Upload JSON report as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: CypressHTMLReport
-          path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report.html
+          name: CypressJSONReport
+          path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report.json
