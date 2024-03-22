@@ -34,11 +34,20 @@ jobs:
       - name: Create directory for reports
         run: mkdir -p cypress/reports/mochawesome/
 
-      - name: Merge Cypress report files
+      - name: Merge Cypress JSON report files
         run: npm run cypress:merge-reports-json
+
+      - name: Merge Cypress HTML report files
+        run: npm run cypress:merge-reports-html
 
       - name: Upload JSON report as artifact
         uses: actions/upload-artifact@v2
         with:
           name: CypressJSONReport
           path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report.json
+
+      - name: Upload HTML report as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: CypressHTMLReport
+          path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report.html
