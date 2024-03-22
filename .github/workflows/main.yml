@@ -44,12 +44,12 @@ jobs:
       - name: Upload JSON report as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: CypressJSONReport
+          name: Cypress-JSON-Report
           path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report-json.json
-          
+
       - name: Upload HTML report as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: CypressHTMLReport
+          name: Cypress-HTML-Report
           path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report-html.html
 
