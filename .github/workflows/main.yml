@@ -35,10 +35,10 @@ jobs:
         run: mkdir -p cypress/reports/mochawesome/
 
       - name: Merge Cypress report files
-        run: npm run cypress:merge-reports
+        run: npm run cypress:merge-reports-json
 
       - name: Create HTML report
-        run: npm run cypress:create-html
+        run: npm run cypress:create-json
 
       - name: Upload HTML report as artifact
         uses: actions/upload-artifact@v2
