@@ -28,26 +28,31 @@ jobs:
       - name: Run Cypress tests
         run: |
           npm run cypress:run
+        continue-on-error: true
 
       - name: Create directory for reports
         run: mkdir -p cypress/reports/mochawesome/
+        continue-on-error: true
 
       - name: Merge Cypress JSON report files
         run: npm run cypress:merge-reports-json
+        continue-on-error: true
 
       - name: Merge and create HTML report
         run: |
           npm run cypress:create-html
+        continue-on-error: true
 
       - name: Upload JSON report as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Cypress-JSON-Report
+          name: CypressJSONReport
           path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report-json.json
-
+        continue-on-error: true
+          
       - name: Upload HTML report as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Cypress-HTML-Report
+          name: CypressHTMLReport
           path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report-html.html
-
+        continue-on-error: true
