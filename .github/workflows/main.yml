@@ -3,8 +3,6 @@ name: automation-jobs
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 env:
   EMAIL: ${{ secrets.USER }}
