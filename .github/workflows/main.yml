@@ -54,5 +54,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: CypressHTMLReport
-          path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report.html
+          path: /home/runner/work/mantisbt-auto/mantisbt-auto/cypress/reports/mochawesome/report-html.html
         continue-on-error: true
