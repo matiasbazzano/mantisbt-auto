@@ -7,7 +7,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cypress:merge-reports-json": "mochawesome-merge cypress/reports/mochawesome/*.json -o cypress/reports/mochawesome/report-json.json",
-    "cypress:create-html": "mochawesome-report-generator --reportDir cypress/reports/mochawesome --reportFilename mochawesome.html --inline"
+    "cypress:create-html": "./node_modules/.bin/mochawesome-report-generator --reportDir cypress/reports/mochawesome --reportFilename mochawesome.html --inline"
   },
   "keywords": [],
   "author": "",
