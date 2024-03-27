@@ -7,7 +7,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cypress:merge-reports-json": "mochawesome-merge cypress/reports/mochawesome/*.json -o cypress/reports/mochawesome/report-json.json",
-    "cypress:create-html": "rm -rf cypress/reports/mochawesome/*.html && mochawesome-merge cypress/reports/mochawesome/*.json -o cypress/reports/mochawesome/mochawesome.json && marge cypress/reports/mochawesome/mochawesome.json -o cypress/reports/mochawesome"
+    "cypress:create-html": "rm -f cypress/reports/mochawesome/mochawesome.html && mochawesome-merge cypress/reports/mochawesome/*.json -o cypress/reports/mochawesome/mochawesome.json && marge cypress/reports/mochawesome/mochawesome.json -o cypress/reports/mochawesome"
   },
   "keywords": [],
   "author": "",
