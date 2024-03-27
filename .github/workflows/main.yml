@@ -1,3 +1,13 @@
+name: automation-jobs
+
+on:
+  push:
+    branches: [main]
+
+env:
+  EMAIL: ${{ secrets.USER }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+
 jobs:
   ui_auto:
     runs-on: ubuntu-latest
